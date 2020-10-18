@@ -112,7 +112,7 @@ public class View extends JFrame{
             player1Score++;
         }else if (playerNum == 2){
             player2Score++;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
 
