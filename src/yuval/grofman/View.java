@@ -103,7 +103,7 @@ public class View extends JFrame{
     /* increments the score of a certain player.
     If playerNum equals one increments player one's score.
     If playerNum equals two increments player two's score.
-    If playerNum is not equal to one or two the code throws a IllegalArgumentException
+    If playerNum is not equal to one or two the function throws a IllegalArgumentException
     because in this code the input parameter must be one or two.
     */
     public void incrementScore(int playerNum){
