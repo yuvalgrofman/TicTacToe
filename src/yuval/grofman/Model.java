@@ -101,6 +101,9 @@ public class Model {
         return gameOngoing;
     }
 
+    /*
+    resets the board in the model
+     */
     public void resetBoard(){
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){

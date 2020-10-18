@@ -8,9 +8,13 @@ public class View extends JFrame{
     private JFrame frame = new JFrame();
     private JPanel titlePanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
+    private JPanel scorePanel = new JPanel();
     private JLabel playerPanel = new JLabel();
     private JLabel titleTextField = new JLabel();
+    private JLabel scoreTextField = new JLabel();
     public JButton[][] jButtons = new JButton[3][3];
+    int player1Score = 0;
+    int player2Score = 0;
 
     View(){
 
@@ -29,6 +33,16 @@ public class View extends JFrame{
         titleTextField.setText("Tic-Tac-Toe");
         titleTextField.setOpaque(true);
 
+        //setting player score color, location, font and text
+        scoreTextField.setBackground(new Color(25,25,25));
+        scoreTextField.setForeground(new Color(25,255,0));
+        scoreTextField.setHorizontalAlignment(JLabel.CENTER);
+        scoreTextField.setVerticalAlignment(JLabel.TOP);
+        scoreTextField.setFont(new Font("Commissioner",Font.BOLD,45));
+        scoreTextField.setText("Player 1 Wins: " + player1Score +" , Player 2 wins: " + player2Score);
+        scoreTextField.setOpaque(true);
+
+
         //setting the title panel(the title text field is added to the title panel)
         titlePanel.setLayout(new BorderLayout());
         titlePanel.setBounds(0,0,800,200);
@@ -36,6 +50,10 @@ public class View extends JFrame{
         //setting the button panel
         buttonPanel.setLayout(new GridLayout(3,3));
         buttonPanel.setBackground(new Color(150,150,150));
+
+        //setting score panel
+        scorePanel.setLayout(new BorderLayout());
+        scorePanel.setBounds(0,800, 800,100);
 
         //creating a 3 3 grid of buttons
         for (int i = 0; i < 3; i++){
@@ -49,8 +67,12 @@ public class View extends JFrame{
             }
         }
 
-        //adding all the components to the frame
+        //adding each label to its respective panel
         titlePanel.add(titleTextField);
+        scorePanel.add(scoreTextField);
+
+        //adding all the components to the frame
+        frame.add(scorePanel,BorderLayout.SOUTH);
         frame.add(titlePanel,BorderLayout.NORTH);
         frame.add(buttonPanel);
         frame.setVisible(true);
@@ -68,13 +90,30 @@ public class View extends JFrame{
         titleTextField.setText(text);
     }
 
-    protected void resetView(){
+    //resets the visual part of the board
+    public void resetView(){
 
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 jButtons[i][j].setText("");
             }
         }
+    }
+
+    /* increments the score of a certain player.
+    if playerNum equals one increments player one's score.
+    if playerNum equals two increments player two's score.
+    if its not one or two raises
+    */
+    public void incrementScore(int playerNum){
+
+        if (playerNum == 1){
+            player1Score++;
+        }else if (playerNum == 2){
+            player2Score++;
+        }
+
+        scoreTextField.setText("Player 1 Wins: " + player1Score +" , Player 2 wins: " + player2Score);
     }
 
 }

@@ -8,7 +8,7 @@ public class Controller{
     private Model model = new Model();
     private View  view = new View();
 
-
+    //adds action listener to all the buttons
     Controller(){
 
         for (int i = 0; i < 3; i++){
@@ -18,6 +18,7 @@ public class Controller{
         }
     }
 
+    //returns true of isPlayerOneTurn and false if it isn't
     public boolean isPlayerOneTurn(){
             return model.isPlayerOneTurn();
         }
@@ -25,6 +26,7 @@ public class Controller{
 
     class mouseListener implements ActionListener{
 
+        //this function sets what happens when the button are click
         @Override
         public void actionPerformed(ActionEvent event) {
             try {
@@ -64,10 +66,11 @@ public class Controller{
 
                     if (result == 1) {
                         view.setTextField("Player 1 won!!!");
-
+                        view.incrementScore(1);
 
                     } else if (result == 2) {
                         view.setTextField("Player 2 won!!!");
+                        view.incrementScore(2);
 
                     } else if (result == 0) {
                         view.setTextField("  Tie   ");
