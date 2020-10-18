@@ -101,9 +101,10 @@ public class View extends JFrame{
     }
 
     /* increments the score of a certain player.
-    if playerNum equals one increments player one's score.
-    if playerNum equals two increments player two's score.
-    if its not one or two raises
+    If playerNum equals one increments player one's score.
+    If playerNum equals two increments player two's score.
+    If playerNum is not equal to one or two the code throws a IllegalArgumentException
+    because in this code the input parameter must be one or two.
     */
     public void incrementScore(int playerNum){
 
@@ -111,6 +112,8 @@ public class View extends JFrame{
             player1Score++;
         }else if (playerNum == 2){
             player2Score++;
+        }else {
+            throw new IllegalArgumentException();
         }
 
         scoreTextField.setText("Player 1 Wins: " + player1Score +" , Player 2 wins: " + player2Score);
