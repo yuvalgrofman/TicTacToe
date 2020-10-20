@@ -13,10 +13,13 @@ public class View extends JFrame{
     private JLabel titleTextField = new JLabel();
     private JLabel scoreTextField = new JLabel();
     public JButton[][] jButtons = new JButton[3][3];
-    int player1Score = 0;
-    int player2Score = 0;
+    private int player1Score = 0;
+    private int player2Score = 0;
+    private int rowsAndCols;
 
-    View(){
+    View(int rowsAndCols){
+
+        this.rowsAndCols = rowsAndCols;
 
         //creating the frame setting its size, border layout and default close operation
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,21 +51,30 @@ public class View extends JFrame{
         titlePanel.setBounds(0,0,800,200);
 
         //setting the button panel
-        buttonPanel.setLayout(new GridLayout(3,3));
+        buttonPanel.setLayout(new GridLayout(rowsAndCols,rowsAndCols));
         buttonPanel.setBackground(new Color(150,150,150));
 
         //setting score panel
         scorePanel.setLayout(new BorderLayout());
         scorePanel.setBounds(0,800, 800,100);
 
+        jButtons = new JButton[rowsAndCols][rowsAndCols];
+
         //creating a 3 3 grid of buttons
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 3; j++){
+        for (int i = 0; i < rowsAndCols; i++){
+            for (int j = 0; j < rowsAndCols; j++){
 
                 jButtons[i][j] = new JButton();
                 buttonPanel.add(jButtons[i][j]);
                 jButtons[i][j].setFocusable(false);
-                jButtons[i][j].setFont(new Font("Arial",Font.PLAIN ,100));
+                jButtons[i][j].setFont(new Font("Arial",Font.PLAIN , (int) (900/Math.pow(rowsAndCols,1.6))));
+                /*
+                 The reason the size is set like that is because we need a equation that answers the following demands:
+                 when rowsAndCols grows the size gets smaller and that the size when rowsAndColumns is 3 is about 100.
+                 And after a bit of testing i found that this equation answers these demands quite well.
+                 (works up to rowsAndCols being about 20)
+                 */
+
 
             }
         }
@@ -93,8 +105,8 @@ public class View extends JFrame{
     //resets the visual part of the board
     public void resetView(){
 
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 3; j++){
+        for (int i = 0; i < this.rowsAndCols; i++){
+            for (int j = 0; j < this.rowsAndCols; j++){
                 jButtons[i][j].setText("");
             }
         }
@@ -105,6 +117,7 @@ public class View extends JFrame{
     If playerNum equals two increments player two's score.
     If playerNum is not equal to one or two the function throws a IllegalArgumentException
     because in this code the input parameter must be one or two.
+    I intentionally make this function throw an error because this is a problem with the code.
     */
     public void incrementScore(int playerNum){
 

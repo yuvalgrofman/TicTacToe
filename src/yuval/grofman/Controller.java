@@ -5,14 +5,28 @@ import java.awt.event.ActionListener;
 
 public class Controller{
 
-    private Model model = new Model();
-    private View  view = new View();
+    private Model model;
+    private View  view;
+    private int rowsAndCols;
 
-    //adds action listener to all the buttons
-    Controller(){
+    /*
+    adds action listener to all the buttons
+    The input of this function is the size of the grid.
+    The grid is always a square so we only need one input to create the grid.
+    */
+    Controller(int rowsAndCols){
 
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 3; j++){
+        if (rowsAndCols < 0 || rowsAndCols > 20){//above twenty the text in the view is too small
+            System.out.println("The input for this class must be between 0 and 20 not including 0");
+            throw new IllegalArgumentException();
+        }
+
+        this.rowsAndCols = rowsAndCols;
+        this.model = new Model(rowsAndCols);
+        this.view = new View(rowsAndCols);
+
+        for (int i = 0; i < rowsAndCols; i++){
+            for (int j = 0; j < rowsAndCols; j++){
                 this.view.getButton(i,j).addActionListener(new mouseListener());
             }
         }
@@ -41,8 +55,8 @@ public class Controller{
                     view.setTextField("Tic-Tac-Toe");
                     int result = Integer.MAX_VALUE;//just initializing value so there won't be build errors
 
-                    for (int i = 0; i < 3; i++) {
-                        for (int j = 0; j < 3; j++) {
+                    for (int i = 0; i < rowsAndCols; i++) {
+                        for (int j = 0; j < rowsAndCols; j++) {
                             if (event.getSource() == view.getButton(i, j) && model.isGameOngoing()) {
                                 if (view.getButton(i, j).getText() == "") {
 
@@ -81,6 +95,9 @@ public class Controller{
                 System.out.println("There has been an unknown exception");
                 System.out.println("The exception details are: ");
                 System.out.println(exception.getCause());
+                System.out.println(exception.getMessage());
+                System.out.println(exception.getLocalizedMessage());
+                System.out.println(exception.getStackTrace()[0].getLineNumber());
             }
         }
     }
