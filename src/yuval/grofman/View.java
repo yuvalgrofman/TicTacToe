@@ -15,7 +15,7 @@ public class View extends JFrame{
     public JButton[][] jButtons = new JButton[3][3];
     private int player1Score = 0;
     private int player2Score = 0;
-    private int rowsAndCols;
+    private final int rowsAndCols;
 
     View(int rowsAndCols){
 

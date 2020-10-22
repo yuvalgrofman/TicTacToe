@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 public class Controller{
 
-    private Model model;
-    private View  view;
-    private int rowsAndCols;
+    private final Model model;
+    private final View  view;
+    private final int rowsAndCols;
 
     /*
     adds action listener to all the buttons
