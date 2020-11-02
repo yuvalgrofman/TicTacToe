@@ -9,10 +9,10 @@ public class Controller{
     private final View  view;
     private final int rowsAndCols;
 
-    /*
-    adds action listener to all the buttons
-    The input of this function is the size of the grid.
-    The grid is always a square so we only need one input to create the grid.
+    /**
+    * * adds action listener to all the buttons
+    * @param rowsAndCols is the input of this function and represents size of the grid.
+    * * The grid is always a square so we only need one input to create the grid.
     */
     Controller(int rowsAndCols){
 

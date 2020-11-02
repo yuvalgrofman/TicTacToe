@@ -20,10 +20,12 @@ public class Model {
         }
     }
 
-    /*
-     * no input this function uses the global board variable. returns 1 if X won,
-     * returns 2 if O won, returns -1 if the game didn't end yet and returns 0 if
-     * it's a tie.
+    /**
+     * * no input. this function uses the class's board variable.
+     * * returns 1 if X won,
+     * * returns 2 if O won
+     * * returns -1 if the game didn't end yet
+     * * returns 0 if it's a tie.
      */
     public int checkVictory() {
         int result;
@@ -52,7 +54,7 @@ public class Model {
             return result;
         }
 
-        result = checkSecondDiagonal();//// checks for the diagonal that starts bottom left
+        result = checkSecondDiagonal();// checks for the diagonal that starts bottom left
 
         if (result != 0) {
             gameOngoing = false;
@@ -190,7 +192,7 @@ public class Model {
     }
 
     /*
-     * sets a point then checks if that point caused a player to win and sets each
+     *  sets a point then checks if that point caused a player to win and sets each
      * players wins accordingly. input is the coordinates of the point that's to be
      * placed. returns 1 if X won, returns 2 if O won, returns -1 if the game didn't
      * end yet and returns 0 if it's a tie.

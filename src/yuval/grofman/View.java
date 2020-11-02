@@ -9,7 +9,6 @@ public class View extends JFrame{
     private JPanel titlePanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
     private JPanel scorePanel = new JPanel();
-    private JLabel playerPanel = new JLabel();
     private JLabel titleTextField = new JLabel();
     private JLabel scoreTextField = new JLabel();
     public JButton[][] jButtons = new JButton[3][3];
@@ -55,6 +54,7 @@ public class View extends JFrame{
         buttonPanel.setBackground(new Color(150,150,150));
 
         //setting score panel
+
         scorePanel.setLayout(new BorderLayout());
         scorePanel.setBounds(0,800, 800,100);
 
